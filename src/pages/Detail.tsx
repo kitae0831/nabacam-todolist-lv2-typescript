@@ -11,9 +11,7 @@ function Detail() {
 
   // find MDN을 찾아서 보기
   // find 메소드 = 해당되는 배열의 모든 객체를 다 뽑아오는 것!
-  const foundTodo = todos.find((item) => {
-    return item.id === params.id;
-  });
+  const foundTodo = todos.find((item) => item.id === params.id);
 
   // 객체일 때만 사용할 수 있는 '?.'가 있다. 값이 있으면 접근 아니면 하지말라는 의미 ===> JS 메서드 체이닝
   return (
