@@ -1,42 +1,42 @@
 import uuid from "react-uuid";
 
-interface Todo {
+export interface TodoInfo {
   id: string;
   title: string;
   contents: string;
   isDone: boolean;
 }
 
+export interface InitialInfo {
+  todos: TodoInfo[];
+}
+
 const SET_TODO = "SET_TODO";
 const DELETE_TODO = "DELETE_TODO";
 const CHANGE_TODO = "CHANGE_TODO";
 
-export const setTodo = (payload: Todo) => {
+export const setTodo = (payload: TodoInfo) => {
   return {
     type: SET_TODO,
     payload,
   };
 };
 
-export const deleteTodo = (payload: Todo["id"]) => {
+export const deleteTodo = (payload: TodoInfo["id"]) => {
   return {
     type: DELETE_TODO,
     payload: payload,
   };
 };
 
-export const changeTodo = (payload: Todo["id"]) => {
+export const changeTodo = (payload: TodoInfo["id"]) => {
   return {
     type: CHANGE_TODO,
     payload: payload,
   };
 };
 
-interface InitialState {
-  todos: Todo[];
-}
-
-const initialState: InitialState = {
+const initialState: InitialInfo = {
   todos: [
     {
       id: uuid(),
@@ -56,7 +56,7 @@ const initialState: InitialState = {
 
 interface Action {
   type: "SET_TODO" | "DELETE_TODO" | "CHANGE_TODO";
-  payload: Todo | string;
+  payload: TodoInfo | string;
 }
 
 const todos = (state = initialState, action: Action) => {
