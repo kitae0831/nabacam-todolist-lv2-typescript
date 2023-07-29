@@ -36,23 +36,21 @@ export const changeTodo = (payload: TodoInfo["id"]) => {
   };
 };
 
-const initialState: InitialInfo = {
-  todos: [
-    {
-      id: uuid(),
-      title: "1",
-      contents: "11",
-      isDone: false,
-    },
+const initialState: TodoInfo[] = [
+  {
+    id: uuid(),
+    title: "1",
+    contents: "11",
+    isDone: false,
+  },
 
-    {
-      id: uuid(),
-      title: "2",
-      contents: "22",
-      isDone: true,
-    },
-  ],
-};
+  {
+    id: uuid(),
+    title: "2",
+    contents: "22",
+    isDone: true,
+  },
+];
 
 interface Action {
   type: "SET_TODO" | "DELETE_TODO" | "CHANGE_TODO";
@@ -63,12 +61,12 @@ const todos = (state = initialState, action: Action) => {
   switch (action.type) {
     case SET_TODO: {
       return {
-        todos: [...state.todos, action.payload],
+        todos: [...state, action.payload],
       };
     }
 
     case DELETE_TODO: {
-      const newTodo = state.todos.filter((filteredItem) => {
+      const newTodo = state.filter((filteredItem) => {
         return filteredItem.id !== action.payload;
       });
       return {
@@ -77,7 +75,7 @@ const todos = (state = initialState, action: Action) => {
     }
 
     case CHANGE_TODO: {
-      const newTodo = state.todos.map((item) => {
+      const newTodo = state.map((item) => {
         if (item.id === action.payload) {
           return { ...item, isDone: !item.isDone };
         } else {

@@ -61,19 +61,20 @@ function Main() {
       <main>
         <h1> 📝 In progress</h1>
         <TodoListBox>
-          {todos.map((item) => {
-            if (item.isDone === false)
-              return <Todo key={item.id} todo={item} />;
-            return null;
-          })}
+          {todos
+            .filter((todo) => todo.isDone === false)
+            .map((item) => (
+              <Todo key={item.id} todo={item} />
+            ))}
         </TodoListBox>
 
         <h1> 💯 Done</h1>
         <TodoListBox>
-          {todos.map((item) => {
-            if (item.isDone === true) return <Todo key={item.id} todo={item} />;
-            return null;
-          })}
+          {todos
+            .filter((todo) => todo.isDone === true)
+            .map((item) => (
+              <Todo key={item.id} todo={item} />
+            ))}
         </TodoListBox>
       </main>
     </ContainerBox>
