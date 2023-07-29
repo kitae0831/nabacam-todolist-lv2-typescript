@@ -4,7 +4,7 @@ import { combineReducers } from "redux";
 import todos from "../modules/todo";
 
 const rootReducer = combineReducers({
-  todos: todos,
+  todos,
 });
 const store = createStore(rootReducer);
 
