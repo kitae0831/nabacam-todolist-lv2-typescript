@@ -63,7 +63,7 @@ function Main() {
         <TodoListBox>
           {todos.map((item) => {
             if (item.isDone === false)
-              return <Todo todo={item} key={item.id} todos={todos} />;
+              return <Todo key={item.id} todo={item} />;
             return null;
           })}
         </TodoListBox>
@@ -71,8 +71,7 @@ function Main() {
         <h1> 💯 Done</h1>
         <TodoListBox>
           {todos.map((item) => {
-            if (item.isDone === true)
-              return <Todo todo={item} key={item.id} todos={todos} />;
+            if (item.isDone === true) return <Todo key={item.id} todo={item} />;
             return null;
           })}
         </TodoListBox>

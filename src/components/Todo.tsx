@@ -1,42 +1,16 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { deleteTodo, changeTodo } from "../redux/modules/todo";
+import { deleteTodo, changeTodo, TodoInfo } from "../redux/modules/todo";
 import { styled } from "styled-components";
 
-function Todo(props) {
-  const dispatch = useDispatch();
+interface Props {
+  todo: TodoInfo;
+}
+
+function Todo(props: Props) {
   const { todo } = props;
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const TodoItem = styled.div`
-    border: 1px solid rgba(160, 187, 148, 0.919);
-    border-radius: 10px;
-    width: 200px;
-    height: 200px;
-    padding: 10px;
-    position: relative;
-  `;
-
-  const Btn = styled.button`
-    background-color: rgb(236, 236, 203);
-    width: 40px;
-    height: 30px;
-    border: none;
-    margin-left: 10px;
-    position: absolute;
-    bottom: 20px;
-  `;
-
-  const DetailBtn = styled.button`
-    background-color: rgb(236, 236, 203);
-    width: 70px;
-    height: 30px;
-    border: none;
-    margin-left: 10px;
-    position: absolute;
-    bottom: 20px;
-    left: 110px;
-  `;
 
   return (
     <TodoItem key={todo.id}>
@@ -73,3 +47,33 @@ function Todo(props) {
 }
 
 export default Todo;
+
+const TodoItem = styled.div`
+  border: 1px solid rgba(160, 187, 148, 0.919);
+  border-radius: 10px;
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+  position: relative;
+`;
+
+const Btn = styled.button`
+  background-color: rgb(236, 236, 203);
+  width: 40px;
+  height: 30px;
+  border: none;
+  margin-left: 10px;
+  position: absolute;
+  bottom: 20px;
+`;
+
+const DetailBtn = styled.button`
+  background-color: rgb(236, 236, 203);
+  width: 70px;
+  height: 30px;
+  border: none;
+  margin-left: 10px;
+  position: absolute;
+  bottom: 20px;
+  left: 110px;
+`;
