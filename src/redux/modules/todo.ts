@@ -39,15 +39,14 @@ export const changeTodo = (payload: TodoInfo["id"]) => {
 const initialState: TodoInfo[] = [
   {
     id: uuid(),
-    title: "1",
-    contents: "11",
+    title: "AWS",
+    contents: "강의를 집중해서 듣자",
     isDone: false,
   },
-
   {
     id: uuid(),
-    title: "2",
-    contents: "22",
+    title: "React",
+    contents: "필요한 부분 찾아 듣기!",
     isDone: true,
   },
 ];
@@ -60,18 +59,14 @@ interface Action {
 const todos = (state = initialState, action: Action) => {
   switch (action.type) {
     case SET_TODO: {
-      return {
-        todos: [...state, action.payload],
-      };
+      return [...state, action.payload];
     }
 
     case DELETE_TODO: {
       const newTodo = state.filter((filteredItem) => {
         return filteredItem.id !== action.payload;
       });
-      return {
-        todos: newTodo,
-      };
+      return newTodo;
     }
 
     case CHANGE_TODO: {
@@ -82,9 +77,7 @@ const todos = (state = initialState, action: Action) => {
           return item;
         }
       });
-      return {
-        todos: newTodo,
-      };
+      return newTodo;
     }
 
     default:
